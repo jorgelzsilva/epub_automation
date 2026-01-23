@@ -5,7 +5,7 @@ import shutil
 import logging
 from config import Config
 from utils.epub_wrapper import extract_epub, package_epub
-from modules import renamer, cleaner, structure, interactivity, topic_identifier, ncx_generator, auditor, url_linker
+from modules import renamer, cleaner, structure, interactivity, topic_identifier, ncx_generator, auditor, url_linker, qr_scanner
 
 def setup_logging():
     logging.basicConfig(
@@ -62,6 +62,9 @@ def main():
         cleaner.run(content_dir)
         post_clean_size = sum(os.path.getsize(os.path.join(root, f)) for root, _, files in os.walk(content_dir) for f in files)
         logging.info(f"Cleaning completed. Size change: {pre_clean_size} -> {post_clean_size} bytes")
+        
+        # 2.5. QR Scanner
+        qr_scanner.run(content_dir)
 
         # 3. Structural Changes (Images)
         structure.run(content_dir)

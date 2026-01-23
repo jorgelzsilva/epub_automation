@@ -1,6 +1,6 @@
 class Config:
     # LM Studio Configuration
-    LM_STUDIO_URL = "http://localhost:1234/v1/chat/completions"
+    LM_STUDIO_URL = "http://192.168.28.70:1234/v1/chat/completions"
     LM_STUDIO_MODEL = "local-model" 
     
     # Cleaning Patterns
