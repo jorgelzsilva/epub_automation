@@ -64,7 +64,7 @@ def main():
         logging.info(f"Cleaning completed. Size change: {pre_clean_size} -> {post_clean_size} bytes")
         
         # 2.5. QR Scanner
-        qr_scanner.run(content_dir)
+        qr_scanner.run(content_dir, os.getcwd())
 
         # 3. Structural Changes (Images)
         structure.run(content_dir)
