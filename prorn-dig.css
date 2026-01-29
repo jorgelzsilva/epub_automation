@@ -1,0 +1,2787 @@
+@font-face {
+	font-family: "Aheadv2";
+	font-style: normal;
+	font-weight: normal;
+	src: url(../Fonts/Aheadv2-Regular.ttf);
+}
+
+@font-face {
+	font-family: "Oswald";
+	font-style: normal;
+	font-weight: 500;
+	src: url(../Fonts/Oswald-Medium.otf);
+}
+
+@font-face {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: normal;
+	src: url(../Fonts/RobotoCondensed-Regular.ttf);
+}
+
+@font-face {
+	font-family: "Roboto";
+	font-style: normal;
+	font-weight: bold;
+	src: url(../Fonts/RobotoCondensed-Bold.ttf);
+}
+
+@font-face {
+	font-family: "Roboto";
+	font-style: italic;
+	font-weight: normal;
+	src: url(../Fonts/RobotoCondensed-Italic.ttf);
+}
+
+@font-face {
+	font-family: "Roboto";
+	font-style: italic;
+	font-weight: bold;
+	src: url(../Fonts/RobotoCondensed-BoldItalic.ttf);
+}
+
+div.Basic-Text-Frame {
+	max-width: 900px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+div.TituloArtigo {
+	max-width: 900px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 50px;
+}
+
+/*
+Cores
+Principal #EF7622
+Secundaria #FFDDC6
+preto fosco #231f20
+Sigla background rgba(239,118,34,0.1)
+*/
+
+
+/*
+-----------------------------
+-----------------------------
+Globais
+-----------------------------
+-----------------------------
+*/
+* {
+	line-height: 130%;
+}
+
+p,
+li {
+	color: #000000;
+	font-family: "Roboto", sans-serif;
+	font-size: 0.833em;
+	text-align: justify;
+}
+
+.none {
+	display: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p._6-Titulo-6 {
+	font-family: "Oswald", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h4._3-Titulo-3 {
+	text-transform: uppercase;
+}
+
+/*
+-----------------------------
+Cores
+-----------------------------
+*/
+
+
+/* Cor Backgrounds 100%*/
+
+.CelularCorPrograma,
+.CelularCorProgramaEstreita,
+._14-Suplemento-Titulo {
+	background-color: #EF7622;
+}
+
+/* Cor Backgrounds 25%*/
+
+table.Quadro-ou-Tabela,
+table.Suplemento,
+.CelularCorProgramaClara,
+.Obj_quadro_destaque,
+div.Obj_texto_icone_Lembrar,
+div.Obj_texto_icone_Definicao,
+div.Obj_texto_icone_Alerta,
+div.Obj_texto_icone_Importante,
+p._9-Formula,
+p._e-Citar,
+p._e-Quadro-destaque,
+div.Obj_texto_icone_SaibaMais {
+	background-color: #FFDDC6;
+}
+
+/* Cor Bordas 100%*/
+table.FimAtividade,
+.Inline-Figure-Borda img,
+.Inline-Figure-Borda-100 img,
+.Inline-Figure-Borda-200 img,
+.Inline-Figure-Borda-300 img,
+.Inline-Figure-Borda-400 img,
+.Inline-Figure-Borda-500 img,
+.Inline-Figure-Borda-700 img,
+.Inline-Figure-Borda-800 img,
+.Inline-Figure-Borda-900 img,
+.CelularCorPrograma,
+.CelularCorProgramaEstreita,
+.zoom {
+	border-color: #EF7622;
+}
+
+td.CelulaLinha {
+	border-color: #EF7622 !important;
+}
+
+/* Cor Bordas 25%*/
+.CelularCorProgramaClara,
+p._8-Citar,
+p.Doi {
+	border-color: #FFDDC6;
+}
+
+/* Cor títulos e paragráfos*/
+h3,
+h4,
+h6,
+p._6-Titulo-6,
+p._16-pre-objetivos,
+p._01-Titulo---Autores,
+h2._1-Titulo-1-Iniciais,
+p._r-Atividade-Resposta,
+h1._0-Titulo-Suplemento,
+h1._0-Titulo-Suplemento1,
+.internal-use_TOC1 a,
+.zoom,
+.close,
+#toc li,
+#toc li a,
+#myBtn,
+span.Cor,
+span.CorRegular,
+p.CasoClinico,
+p.Organizador,
+p.QR-texto,
+p.QR-3Dtexto,
+p.QR-slide {
+	color: #EF7622;
+}
+
+/* Cor Siglas */
+
+.sigla,
+.desdobr {
+	border-bottom-color: #EF7622;
+	background-color: rgba(239, 118, 34, 0.1);
+}
+
+.cellnoborder {
+	border: none;
+	padding-top: 10px;
+}
+
+.questaoCorreta ul,
+.questaoConfira ul,
+.questaoErrada ul {
+	margin-top: 11px;
+}
+
+.questaoErrada li,
+.questaoConfira li,
+.questaoCorreta li {
+	display: list-item;
+	padding-left: 6px;
+}
+
+.questaoErrada .Quadro-ou-Tabela tr:first-child p,
+.questaoConfira .Quadro-ou-Tabela tr:first-child p,
+.questaoCorreta .Quadro-ou-Tabela tr:first-child p {
+	color: #ffffff;
+	font-size: 0.917em;
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.questaoErrada .Quadro-ou-Tabela p,
+.questaoConfira .Quadro-ou-Tabela p,
+.questaoCorreta .Quadro-ou-Tabela p {
+	font-size: 0.75em;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	border-color: #fff;
+}
+
+.questaoErrada .Quadro-ou-Tabela ul,
+.questaoConfira .Quadro-ou-Tabela ul,
+.questaoCorreta .Quadro-ou-Tabela ul {
+	margin-top: 0px !important;
+}
+
+.questaoErrada {
+	border-top: solid 2px #C32931;
+	background-color: #FFF2F2;
+	display: none;
+	margin-left: 37px;
+	margin-right: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px 15px 15px 15px;
+}
+
+.questaoCorreta {
+	border-top: solid 2px #73B725;
+	background-color: #F3F9ED;
+	display: none;
+	margin-left: 37px;
+	margin-right: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px 15px 15px 15px;
+}
+
+.questaoConfira {
+	border-top: solid 2px #CBCBCB;
+	background-color: #EEEEEE;
+	display: none;
+	margin-left: 37px;
+	margin-right: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 5px 15px 15px 15px;
+}
+
+.resposta {
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+p._1-Corpo-Resposta {
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 11px;
+}
+
+p._c-Resposta-gabarito {
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 1em;
+}
+
+p._c11-Resposta-corpo {
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+}
+
+p._1-Corpo-Comentario {
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 11px;
+}
+
+body {
+	padding: 3% 3% 10% 3%;
+}
+
+.sigla {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	display: inline;
+	cursor: pointer;
+}
+
+.desdobr {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	padding: 0 2px 0 2px;
+	cursor: pointer;
+	display: none;
+}
+
+td,
+th {
+	border-style: solid;
+	border-width: 1px;
+	border-color: #fff;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table.Basic-Table {
+	border-color: #000000;
+	border-style: solid;
+	border-width: 1px;
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+
+table.CasoClinico {
+	border-color: #000000;
+	border-style: none;
+	border-width: 0px;
+	margin-bottom: 0px;
+	margin-top: 1em;
+	vertical-align: top;
+}
+
+td.CasoClinico {
+	border-style: none;
+	border-width: 1px;
+	vertical-align: top;
+}
+
+td.CasoClinicoDireita {
+	border-style: none;
+	border-width: 1px;
+	vertical-align: top;
+}
+
+td.CasoClinicoEsquerda {
+	border-style: none;
+	border-width: 1px;
+	vertical-align: top;
+	width: 100px;
+}
+
+table.Figuras-2 {
+	margin-bottom: 10px;
+	margin-top: 0px;
+	width: 600px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+table.Figuras-2 td {
+	vertical-align: top;
+	border: none;
+	padding-right: 26px;
+}
+
+table.Figuras-2 td:first-child {
+	width: 282px;
+	padding-right: 30px;
+}
+
+table.Quadro-ou-Tabela {
+	margin-bottom: 4px;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	border-color: #fff;
+}
+
+thead {
+	background: #fff;
+	border-style: solid;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-color: #231f20;
+	border-top-width: 4px;
+	border-bottom-color: #231f20;
+	border-bottom-width: 4px;
+}
+
+table.Quadro-ou-Tabela tr:nth-child(2) td {
+	border-top-width: 1px !important;
+}
+
+table.Quadro-ou-Tabela .None {
+	border-style: solid;
+	border-width: 1px;
+	padding: 6px;
+
+}
+
+table.Quadro-ou-Tabela td {
+	border-style: solid;
+	border-width: 1px;
+	padding: 6px;
+	border-color: #fff;
+}
+
+table.Quadro-ou-Tabela tr {
+	vertical-align: top;
+}
+
+tr.Quadro-ou-Tabela:hover {
+	background: rgba(239, 118, 34, 0.2);
+}
+
+table.Quadro-ou-Tabela ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
+
+}
+
+.Obj_quadro_destaque {
+	padding: 10px;
+	margin-top: 20px;
+}
+
+table.FimAtividade {
+	border-bottom-style: solid !important;
+	border-width: 2px !important;
+	margin-top: 15px !important;
+	margin-bottom: 50px !important;
+	width: 100%;
+}
+
+table.FimAtividade tr td {
+	border: 0;
+}
+
+table.Atividade {
+	border: none;
+	margin-top: -20px;
+	margin-bottom: 30px;
+}
+
+table.Atividade tr td {
+	border: 0;
+}
+
+td.CelulaIconeAtividade {
+	padding-right: 6px;
+	vertical-align: middle;
+}
+
+td.CelulaAtividade {
+	vertical-align: middle;
+	padding-right: 10px;
+}
+
+td.CelulaIconeAtividade img {
+	position: relative;
+	top: 28px;
+}
+
+td.CelulaLinha {
+	border-bottom-style: solid !important;
+	border-width: 2px !important;
+	margin-top: 15px !important;
+	width: 100%;
+}
+
+p._3-TituloAtividade {
+	font-size: 1em;
+	font-weight: bold;
+	margin-right: 0px;
+	text-align: left;
+	text-transform: uppercase;
+	position: relative;
+	top: 25px;
+}
+
+p._3-TituloLembrar {
+	font-size: 1em;
+	font-weight: bold;
+	margin-right: 0px;
+	text-align: left;
+	text-transform: uppercase;
+	position: relative;
+	background-color: #FFFFFF;
+	top: 4px;
+	padding-left: 33px
+}
+
+table.Correlacao {
+	border: none;
+	margin-bottom: 11px;
+	margin-top: 0px;
+	margin-left: 35px;
+}
+
+table.Correlacao tr {
+	vertical-align: top;
+	border: none;
+}
+
+table.Correlacao td {
+	vertical-align: top;
+	border: none;
+}
+
+table.Correlacao td:first-child {
+	width: 40%;
+}
+
+p.Basic-Paragraph {
+	color: #ff0000;
+	font-size: 0.75em;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+}
+
+div.Fiofinal {
+	border-bottom-style: solid;
+	border-bottom-width: 6px;
+	margin-bottom: 3em;
+}
+
+p+div div.Fiofinal {
+	margin-top: 1em;
+}
+
+ul {
+	padding-left: 0px;
+	margin-top: 1em;
+	margin-bottom: 0px;
+	list-style-type: square;
+}
+
+ul ul {
+	margin-top: 0px;
+}
+
+ul ul li {
+	font-size: 1em !important;
+}
+
+ul ul ul li {
+	font-size: 1em !important;
+}
+
+p._01-Titulo---Autores {
+	font-family: "Oswald", sans-serif;
+	font-size: 1em;
+	margin-bottom: 4px;
+	margin-left: 25%;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+	text-transform: uppercase;
+	background-color: #000000;
+	padding: 10px;
+	color: #ffffff;
+}
+
+p.Organizador {
+	font-weight: bold;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: right;
+	width: 400px;
+}
+
+p._01-Titulo---Tradutor {
+	font-size: 0.85em;
+	font-style: italic;
+	font-weight: bold;
+	margin-bottom: 3px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 5px;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+span.Cor {
+	font-weight: bold;
+}
+
+div.diretoria {
+	border-left-style: solid;
+	padding: 0 0 0 10px;
+	width: 300px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.TOC,
+h2 {
+	font-family: "Oswald", sans-serif;
+	font-size: 1.333em;
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-left: -1.5em;
+	margin-right: 0px;
+	margin-top: 23px;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+h2._1-Titulo-1,
+h2._1-Titulo-1-Iniciais {
+	font-size: 1.333em;
+	font-weight: bold;
+	margin: 20px 0 0 0;
+	text-align: left;
+}
+
+span.ahead {
+	font-family: "Aheadv2";
+	font-size: 1.25em;
+}
+
+p._1-Corpo {
+	margin: 11px 0px 0px 0px;
+}
+
+p._18-Corpo-Espaco-Duplo {
+	text-align: left;
+	margin: 22px 0px 0px 0px;
+}
+
+li p._1-Corpo {
+	margin: 0px;
+}
+
+p._1-Corpo-autores {
+	margin: 0px 0px 0px 60px;
+}
+
+p._15-Corpo-citacao-nivel2 {
+	margin-left: 40%;
+}
+
+p._15-Corpo-citacao-nivel2,
+p._15-Corpo-citacao {
+	font-size: 0.7497em;
+	margin: 11px 0px 0px 30%;
+}
+
+p._q-Nota-Rodape {
+	font-size: 0.6em;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-top: 11px;
+}
+
+p._q-Nota-Rodape a {
+	padding-right: 15px;
+}
+
+p._11-Corpo-sem-espacos,
+p._112-Corpo-sem-espacos-Borda {
+	margin: 0px;
+}
+
+p.ficha,
+p._ficha {
+	margin-bottom: 11px;
+	margin-left: 70px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+	text-indent: -70px;
+}
+
+p.QR-texto,
+p.QR-slide {
+	font-weight: bold;
+	padding: 0;
+	margin-left: 25px;
+	text-indent: -25px;
+}
+
+
+p.ficha2,
+p._ficha2 {
+	margin-bottom: 11px;
+	margin-left: 50px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+	text-indent: 20px;
+}
+
+p._ficha2Right {
+	margin-bottom: 11px;
+	margin-left: 50px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: right;
+	text-indent: 20px;
+}
+
+.espacamentoDireita {
+	padding-right: 20px;
+}
+
+div.quadroficha {
+	border-color: #000000;
+	border-style: solid;
+	border-width: 1px 0 1px 0;
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 80px;
+	padding-top: 15px;
+	padding-bottom: 0px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+ul.objetivos {
+	border-left-style: solid;
+	border-left-width: 6px;
+	margin-left: 0px;
+	padding-left: 15px;
+}
+
+li._12-Corpo-com-marcador,
+li._17-objetivos {
+	font-family: "Roboto", sans-serif;
+}
+
+._121-Corpo-com-marcador-numero,
+p._121-Corpo-com-marcador-numero {
+	color: #000000;
+	margin: 0;
+	font-size: 0.833em;
+}
+
+li._12-Corpo-com-marcador,
+.questaoErrada li,
+.questaoCorreta li,
+.questaoConfira li,
+._17-objetivos {
+	margin: 0 0 0 16px;
+}
+
+li p._121-Corpo-com-marcador-numero {
+	color: #000000;
+	margin: 0;
+	font-size: 1em;
+}
+
+li._121-Quadro-corpo-Marcador {
+	font-size: 0.75em;
+	margin-bottom: 0px;
+	margin-left: 15px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+}
+
+li._122-Quadro-corpo-Marcador-nivel-2 {
+	font-size: 0.75em;
+	margin-bottom: 0px;
+	margin-left: 29px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+	list-style-type: disc;
+}
+
+li._123-Quadro-corpo-Marcador-nivel-3 {
+	font-size: 0.75em;
+	margin-bottom: 0px;
+	margin-left: 29px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+	list-style-type: none;
+}
+
+li._123-Quadro-corpo-Marcador-nivel-3::before {
+	content: "- ";
+	color: #000000;
+}
+
+li._124-Quadro-corpo-Marcador-nivel-4 {
+	font-size: 0.75em;
+	margin-bottom: 0px;
+	margin-left: 35px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+	list-style-type: none;
+}
+
+li._124-Quadro-corpo-Marcador-nivel-4::before {
+	content: "· ";
+	color: #000000;
+}
+
+li._14-Corpo-com-marcador-nivel-3 {
+	font-size: 0.833em;
+	margin-bottom: 0px;
+	margin-left: 11px;
+	margin-right: 0px;
+	margin-top: 0px;
+	list-style-type: none;
+}
+
+li._14-Corpo-com-marcador-nivel-3::before {
+	content: "- ";
+	color: #000000;
+}
+
+p._12-Quadro-corpo {
+	font-size: 0.75em;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+}
+
+p.Atividades {
+	font-family: "Oswald";
+	font-size: 1.33em;
+	margin-bottom: -6px;
+	margin-left: -20px;
+	margin-right: 0px;
+	margin-top: 0px;
+	padding: 15px 13px 13px 5px;
+	color: #ffffff;
+	display: inline-block;
+	background-color: #231f20;
+}
+
+p.CasoClinico {
+	font-family: "Oswald";
+	font-size: 1.33em;
+	margin-bottom: -6px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 10px;
+	padding: 0px;
+	width: 160px;
+}
+
+
+p._2-figura-fonte {
+	font-size: 0.583em;
+	font-style: italic;
+	margin-bottom: 11px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 6px;
+	text-align: left;
+}
+
+p._13-Quadro-Fonte {
+	font-size: 0.583em;
+	font-style: italic;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: -5px;
+	text-align: left;
+	border-top-style:
+		solid;
+	border-top-width: 4px;
+	border-top-color: #000;
+}
+
+p._13-Quadro-Fonte+p._13-Quadro-Fonte {
+	margin-top: 0px;
+	border-top-style: none;
+}
+
+p._c1-Atividade-texto-livre {
+	margin-bottom: 1em;
+	margin-left: 37px;
+	margin-right: 0px;
+	margin-top: 11px;
+}
+
+p._a-Atividade-discursiva {
+	margin-bottom: 0px;
+	margin-left: 37px;
+	margin-right: 0px;
+	margin-top: 0px;
+	height: 10px;
+	display: none;
+}
+
+p._c-Atividade-Enunciado {
+	margin: 2em 0 11px 51px;
+	text-indent: -14px;
+}
+
+h3 {
+	font-family: "Oswald", sans-serif;
+	font-size: 1.05em;
+	font-weight: bold;
+	margin: 23px 0 0 12px;
+	text-indent: -12px;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+p._8-Citar {
+	font-family: "Oswald", sans-serif;
+	font-size: 0.9em;
+	font-weight: bold;
+	margin: 2em 0 0px 0;
+	text-align: left;
+	text-transform: uppercase;
+	background-color: #ffffff;
+	border-style: solid;
+	padding: 2px;
+	border-width: 10px;
+}
+
+p.Doi {
+	font-family: "Oswald", sans-serif;
+	width: 80%;
+	font-size: 0.9em;
+	margin: 2em auto 0px auto;
+	text-align: left;
+	background-color: #ffffff;
+	border-style: solid;
+	padding: 2px;
+	border-width: 10px;
+}
+
+p._e-Citar {
+	font-family: "Roboto", sans-serif;
+	font-size: 0.9em;
+	margin: 0px 0 0 0px;
+	text-align: left;
+	padding: 10px;
+}
+
+
+p._b41-Atividade-alternativa---FalsoVerdadeiro-ABC {
+	margin-left: 51px;
+	text-indent: -14px;
+	text-align: left;
+}
+
+p._b-Atividade-alternativa {
+	text-indent: -15px;
+	margin-left: 55px;
+
+}
+
+p._b-Atividade-alternativa::first-letter {
+	font-family: "Aheadv2";
+	font-size: 1.3em;
+}
+
+p._b41-Atividade-alternativa---FalsoVerdadeiro-ABC,
+p._b-Atividade-alternativa {
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+}
+
+h1._0-Titulo-Artigo {
+	font-family: "Oswald", sans-serif;
+	font-size: 1.833em;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+	text-transform: uppercase;
+	background-color: #FFDDC6;
+	padding: 50px 10px 10px 10px;
+}
+
+p.x00-Titulo-Sumario,
+p._0-Titulo-Sumario {
+	font-size: 1.833em;
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: right;
+	text-transform: uppercase;
+}
+
+p._2-Elementos-inseridos {
+	margin-bottom: 23px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 23px;
+	text-align: left;
+}
+
+p._4-Decisao,
+p._4-Planejamento,
+p._7-Avaliacao,
+p._8-Risco,
+p._9-Acompanhamento,
+p._d-Reflexao,
+p._f-Atencao,
+p._f-Saiba-mais-contabil,
+p._g-Conduta-contabil,
+p._h-Criterio,
+p._i-Tecnica-contabil,
+p._j-Formula-contabil,
+p._k-Norma-contabil,
+p._l-Caso-Pratico,
+p._1-Lembrar,
+p._n-Dica-clinica,
+p._m-Exemplo-Clinico,
+p._h-Criterios-de-diagnostico,
+p._g-Conduta-nutricional,
+p._i-Alimentos-relacionados,
+p._9-Formula,
+p._g-Cirurgia,
+p._g-Procedimento,
+p._8-Atividade-gerencial,
+p._6-Estudo-de-Caso,
+p._7-Levantamento-de-Dados,
+p._d-Diagnostico-Diferencial,
+p._g-Saiba-mais,
+p._p-AplicacaoLei,
+p._n-LeiLegislacao,
+p._m-InterpretacaoLei,
+p._t-Manejo-cao,
+p._u-Manejo-gato,
+p._s-Manejo,
+p._8-Padrao-Saude-Funcional {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+p._9-Formula {
+	padding: 10px;
+	margin: 10px 0 10px 0;
+}
+
+p._9-Formula+p._9-Formula {
+	margin-bottom: 1em;
+	margin-top: -1em;
+	padding: 10px;
+}
+
+
+
+p._3-Importante {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+p._6-Caso-clinico {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+p._h-Diagnostico {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+p._d-Tratamento {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+p._8-Risco,
+p._5-Cuidados-enfermagem,
+p._g-Tecnica {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+p._e-Quadro-destaque {
+	margin-bottom: 1em;
+	margin-top: 1em;
+	padding: 10px;
+}
+
+p._e-Quadro-destaque+p._e-Quadro-destaque {
+	margin-bottom: 1em;
+	margin-top: -1em;
+	padding: 10px;
+}
+
+div.Obj_quadro_destaque p._e-Quadro-destaque {
+	margin-bottom: 0.5em;
+	margin-top: 0.5em;
+	padding: 0px;
+
+}
+
+p._31-Icones-inseridos-keep {
+	margin-bottom: 0px;
+	margin-top: 6px;
+	text-align: left;
+}
+
+p._31-Icones-inseridos-keep img {
+	height: 29px;
+	width: 29px;
+}
+
+p._3-Icones-inseridos {
+	margin-bottom: 0px;
+	margin-top: 6px;
+	text-align: left;
+}
+
+p._3-Icones-inseridos img {
+	height: 29px;
+	width: 29px;
+}
+
+p.x83-Titulo-icone {
+	font-size: 1em;
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-top: 20px;
+	text-align: left;
+}
+
+p.x83-Titulo-icone img {
+	height: 29px;
+	width: 29px;
+}
+
+p._4-Quadro {
+	font-family: "Oswald", sans-serif;
+	font-size: 1em;
+	margin-bottom: 0px;
+	margin-top: 1em;
+	display: inline-block;
+	padding: 10px 15px;
+	color: #ffffff;
+	background-color: #231f20;
+	text-transform: uppercase;
+}
+
+.branco {
+	background-color: #fff;
+}
+
+.preto {
+	background-color: #231f20;
+}
+
+.ultimo {
+	border-bottom-style: solid;
+	border-bottom-width: 4px;
+}
+
+.topico {
+	background-color: #231f20;
+}
+
+tr.topico p._12-Quadro-corpo {
+	color: #fff;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.subtopico {
+	background-color: rgba(239, 118, 34, 0.4)
+}
+
+tr.subtopico p._12-Quadro-corpo {
+	color: #000;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+tr.center p {
+	text-align: center;
+}
+
+
+p._16-pre-objetivos {
+	margin-bottom: 1em;
+	font-weight: bold;
+
+}
+
+p._5-Referencias {
+	margin-bottom: 0px;
+	margin-left: 14px;
+	margin-right: 0px;
+	margin-top: 11px;
+	text-indent: -14px;
+}
+
+p._5-ReferenciasRec {
+	margin-bottom: 0px;
+	margin-left: 14px;
+	margin-right: 0px;
+	margin-top: 11px;
+}
+
+p._6-Referencias-Recomendadas {
+	margin-bottom: 0px;
+	margin-left: 14px;
+	margin-right: 0px;
+	margin-top: 11px;
+}
+
+p._r-Atividade-Resposta {
+	font-size: 0.667em;
+	font-style: italic;
+	margin-bottom: 11px;
+	margin-left: 51px;
+	margin-right: 11px;
+	margin-top: 3px;
+	text-align: left;
+	text-indent: -14px;
+	cursor: pointer;
+}
+
+p._11-Quadro-Titulo {
+	font-family: "Oswald", sans-serif;
+	text-align: left;
+	font-size: 1em;
+	margin: 0px 0px 0px 0px;
+	text-transform: uppercase;
+}
+
+p._221-Elementos-inseridos-centro-antes-8 {
+	margin-bottom: 10px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 23px;
+	text-align: left;
+}
+
+p._1-figura-legenda {
+	font-size: 0.667em;
+	margin-bottom: -4px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 6px;
+	text-align: left;
+}
+
+p._b1-Atividade-alternativa-I {
+	margin-bottom: 0px;
+	margin-left: 57px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-indent: -20px;
+}
+
+li._13-Corpo-com-marcador-nivel-2 {
+	margin-bottom: 0px;
+	margin-left: 13px;
+	margin-right: 0px;
+	margin-top: 0px;
+	list-style-type: disc;
+}
+
+p._2-Definicao {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+p._4-Alerta {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+p._b4-Atividade-alternativa---FalsoVerdadeiro {
+	margin-bottom: 0px;
+	margin-left: 55px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+	text-indent: -19px;
+}
+
+p._5-Indicacao {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+p._8-Contraindicacao {
+	margin-bottom: 0px;
+	margin-top: 0px;
+}
+
+li._c11-Atividade-texto-livre-marcador {
+	margin-bottom: 0px;
+	margin-left: 54px;
+	margin-right: 0px;
+	margin-top: 0px;
+}
+
+li._c12-Atividade-texto-livre-marcador-2 {
+	margin-bottom: 0px;
+	margin-left: 15px;
+	margin-right: 0px;
+	margin-top: 0px;
+	list-style-type: disc;
+}
+
+li._c13-Atividade-texto-livre-marcador-3 {
+	margin-bottom: 0px;
+	margin-left: 85px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-indent: -8px;
+	list-style-type: none;
+}
+
+li._c13-Atividade-texto-livre-marcador-3:before {
+	content: "- ";
+	color: #000000;
+}
+
+p._i-Posologia {
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+}
+
+._f-Saiba-mais a,
+._5-Referencias a,
+._f-Saiba-mais-contabil a,
+._g-Saiba-mais a,
+._h-Saiba-mais a,
+._1-Corpo a,
+._11-Corpo-sem-espacos a,
+._12-Corpo-com-marcador a,
+._121-Corpo-com-marcador-numero a,
+._13-Corpo-com-marcador-nivel-2 a,
+._14-Corpo-com-marcador-nivel-3 a,
+._12-Quadro-corpo a,
+._121-Quadro-corpo-Marcador a,
+._122-Quadro-corpo-Marcador-nivel-2 a,
+._123-Quadro-corpo-Marcador-nivel-3 a,
+._124-Quadro-corpo-Marcador-nivel-4 a,
+._e-Quadro-destaque a {
+	word-break: break-all;
+}
+
+.internal-use_TOC1 a {
+	font-family: "Oswald", sans-serif;
+	font-size: 1em;
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-top: 23px;
+	text-align: left;
+	text-decoration: underline;
+}
+
+h4 {
+	font-family: "Oswald", sans-serif;
+	font-size: 0.9em;
+	font-weight: bold;
+	margin: 23px 0 0 12px;
+	text-indent: -14px;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+h5 {
+	font-size: 0.77em;
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 23px;
+	text-align: left;
+	color: #bbbdc0;
+	text-transform: uppercase;
+}
+
+h6 {
+	font-size: 0.69em;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 23px;
+	text-align: left;
+}
+
+p._6-Titulo-6 {
+	font-family: "Roboto", sans-serif;
+	font-size: 0.667em;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 23px;
+	text-align: left;
+}
+
+p._f-Saiba-mais,
+p._h-Saiba-mais {
+	margin-bottom: 5px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+}
+
+p._b5-Atividade-alternativa---Correlacao {
+	margin-bottom: 0px;
+	margin-left: 18px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+	text-indent: -18px;
+}
+
+p._b6-Atividade-alternativa---Correlacao2 {
+	margin-bottom: 0px;
+	margin-left: 34px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+	text-indent: -18px;
+}
+
+p._b6-Atividade-alternativa---Correlacao2::before,
+p._b4-Atividade-alternativa---FalsoVerdadeiro::before {
+	content: "(  ) ";
+}
+
+span.Marcador-quadro {
+	font-family: ZapfDingbats, sans-serif;
+	font-size: 0.583em;
+
+}
+
+.negrito,
+strong {
+	font-weight: bold !important;
+}
+
+.underline {
+	text-decoration: underline !important;
+}
+
+.italico,
+em {
+	font-style: italic !important;
+}
+
+.normal {
+	font-style: normal !important;
+	font-weight: normal !important;
+}
+
+.negritoitalico {
+	font-weight: bold !important;
+	font-style: italic !important;
+}
+
+.sobrescrito,
+sup {
+	vertical-align: super;
+	font-size: 70%;
+}
+
+.subscrito,
+sub {
+	vertical-align: sub;
+	font-size: 70%;
+}
+
+p._2-figura-fonte .sobrescrito {
+	font-size: 0.6em;
+	position: relative;
+	top: -3px;
+}
+
+.Obj_icone,
+.Obj_icone_Caso {
+	float: left;
+}
+
+.Elemento-Typefi-Caso {
+	margin-top: 0px;
+}
+
+.Obj_icone_Caso img {
+	height: 50px;
+	margin-right: 10px;
+	width: auto;
+	position: relative;
+	margin-top: -12px;
+	z-index: 2;
+}
+
+.Obj_CasoClinico img {
+	height: auto;
+	width: 200px;
+	position: relative;
+	margin-top: 0px;
+	margin-bottom: -4px;
+	margin-right: 20px;
+	z-index: 2;
+}
+
+.Obj_icone img {
+	height: 29px;
+	width: 29px;
+}
+
+div.Obj_texto_icone {
+	height: 29px !important;
+	padding-left: 10px;
+	margin-left: 37px !important;
+	vertical-align: middle;
+	display: table-cell;
+}
+
+.Elemento-Typefi {
+	margin-top: 15px;
+	margin-bottom: 25px;
+}
+
+.Elemento-Typefi-atividade {
+	margin-top: 3em;
+	margin-bottom: 0px;
+}
+
+div.Atividade {
+	background-color: #FFDDC6;
+	padding: 20px 5px 10px 0px;
+}
+
+.Obj_icone_Lembrar,
+.Obj_icone_Atividade {
+	float: left;
+}
+
+.Obj_icone_Lembrar img {
+	height: 80px;
+	width: auto;
+	position: relative;
+	margin-top: 0px;
+	z-index: 2;
+}
+
+.Obj_icone_Atividade img {
+	height: 50px;
+	width: auto;
+	position: relative;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-right: 20px;
+	z-index: 2;
+}
+
+div.Obj_texto_icone_Lembrar {
+	margin-top: 0px;
+	margin-left: 113px;
+	margin-right: 0px;
+	min-height: 60px;
+	position: static;
+	border-style: none;
+	border-width: 1px;
+	padding: 10px 10px 10px 10px;
+	z-index: 0;
+}
+
+div.Obj_texto_icone_Importante {
+	margin-top: 0px;
+	margin-left: 85px;
+	margin-right: 0px;
+	min-height: 60px;
+	position: static;
+	border-style: none;
+	border-width: 1px;
+	padding: 10px 10px 10px 10px;
+	z-index: 0;
+}
+
+.Elemento-Typefi-Lembrar,
+.Elemento-Typefi-Alerta,
+.Elemento-Typefi-Definicao,
+.Elemento-Typefi-Importante,
+.Elemento-Typefi-Saiba-mais {
+	margin-left: 0px;
+	margin-top: 25px;
+	margin-right: 0px;
+	margin-bottom: 25px;
+	padding: 0px;
+	width: 100%;
+}
+
+.Elemento-Typefi-Saiba-mais {
+	background: rgba(239, 118, 34, 0.5);
+}
+
+.Obj_palavra_Lembrar {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	width: 135px;
+	position: static;
+	z-index: 1;
+}
+
+.Obj_palavra_Atividade {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	z-index: 1;
+	border-bottom-style: solid;
+	border-bottom-width: 6px;
+	border-bottom-color: #231f20;
+}
+
+.Obj_palavra_Casos {
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	z-index: 5;
+	border-bottom-style: solid;
+	border-bottom-width: 6px;
+}
+
+.Obj_icone_Definicao,
+.Obj_icone_Alerta,
+.Obj_icone_Importante,
+.Obj_icone_SaibaMais {
+	float: left;
+}
+
+.Obj_icone_Definicao img {
+	height: 80px;
+	width: auto;
+	position: relative;
+	margin-top: 0px;
+	z-index: 2;
+}
+
+.Obj_icone_Alerta img {
+	height: 80px;
+	width: auto;
+	position: relative;
+	margin-top: 0px;
+	z-index: 2;
+}
+
+.Obj_icone_SaibaMais img {
+	height: 80px;
+	width: auto;
+	position: relative;
+	margin-top: 0px;
+	z-index: 2;
+}
+
+.Obj_icone_Importante img {
+	height: 50px;
+	width: auto;
+	position: relative;
+	margin-top: 0px;
+	z-index: 2;
+}
+
+div.Obj_texto_icone_Definicao {
+	margin-top: 0px;
+	margin-left: 70px;
+	margin-right: 0px;
+	min-height: 60px;
+	position: static;
+	border-style: none;
+	border-width: 1px;
+	padding: 10px 10px 10px 10px;
+	z-index: 0;
+}
+
+div.Obj_texto_icone_Alerta {
+	margin-top: 0px;
+	margin-left: 67px;
+	margin-right: 0px;
+	min-height: 60px;
+	position: static;
+	border-style: none;
+	border-width: 1px;
+	padding: 10px 10px 10px 10px;
+	z-index: 0;
+}
+
+div.Obj_texto_icone_SaibaMais {
+	margin-top: 0px;
+	margin-left: 80px;
+	margin-right: 0px;
+	min-height: 60px;
+	position: static;
+	border-style: none;
+	border-width: 1px;
+	padding: 10px 10px 10px 10px;
+	z-index: 0;
+}
+
+table.TituloArtigo {
+	width: 100%;
+}
+
+table.TituloArtigo tr {
+	border: none;
+}
+
+.CelulaPreta {
+	background-color: #000000;
+	border-color: #000000;
+	width: 60px;
+}
+
+.CelularCorPrograma {
+	height: 90px;
+	padding: 20px;
+	vertical-align: center;
+}
+
+.CelularCorProgramaEstreita {
+	width: 20px;
+}
+
+.CelularCorProgramaClara {
+	padding: 10px;
+	vertical-align: center;
+}
+
+.internal-use_TOC1 {
+	font-family: "Oswald", sans-serif;
+	text-align: left;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 1em;
+	margin-left: 60px;
+	margin-bottom: 0px;
+	margin-top: 30px;
+}
+
+.TOC2 {
+	text-transform: uppercase;
+	Margin-left: 20px;
+	font-size: 0.88em;
+}
+
+#table-1 {
+	width: 100%;
+}
+
+.None {
+	border: none;
+}
+
+/*Ampliar imagens*/
+.InlineGrande {
+	max-width: 900px !important;
+	position: relative;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center !important;
+	z-index: 5 !important;
+	white-space: nowrap;
+}
+
+.InlineGrande img {
+	text-align: center !important;
+	max-width: 900px !important;
+	position: relative;
+	background-color: #fff;
+	padding: 10px;
+	border: 4px solid #000 !important;
+	z-index: 6 !important;
+	vertical-align: text-top;
+	margin-bottom: -7px !important;
+	cursor: pointer;
+}
+
+.InlineGrande p {
+	white-space: normal;
+}
+
+.fundoPreto {
+	width: 100% !important;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	background: rgba(0, 0, 0, 0.85);
+	z-index: -1 !important;
+	cursor: pointer;
+}
+
+.zoom {
+	font-family: "Arial", sans-serif;
+	font-size: 0.833em;
+	line-height: 1.5;
+	width: 20px;
+	height: 20px;
+	border-radius: 15px;
+	border-style: solid;
+	border-width: 1px;
+	text-align: center;
+	position: relative;
+	right: -11px;
+	top: 13px;
+	margin-left: auto;
+	margin-top: -16px;
+	background-color: #fff;
+	cursor: pointer;
+}
+
+.zoom::before {
+	content: " + ";
+	cursor: pointer;
+}
+
+.fechar {
+	color: #000;
+	font-family: "Arial", sans-serif;
+	font-size: 0.833em;
+	font-weight: bold;
+	border-radius: 30px;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #000;
+	position: relative;
+	top: -9px;
+	right: 15px;
+	background-color: #fff;
+	padding: 1px 6px 3px 2px;
+	z-index: 7;
+	margin-top: 16px;
+	cursor: pointer;
+}
+
+.fechar::before {
+	content: " x ";
+	cursor: pointer;
+}
+
+/*Figuras*/
+.Legenda {
+	text-align: center;
+	margin-top: 1px;
+	margin-bottom: 1px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	width: 100%;
+	max-width: 600px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure img {
+	width: 100%;
+	max-width: 600px;
+	margin-bottom: 0px;
+}
+
+.Inline-Figure-Borda {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-Borda img {
+	margin-bottom: 0px;
+
+	border-style: solid;
+	border-width: 1px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.Inline-Figure-Borda-700 {
+	text-align: center;
+	max-width: 700px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-Borda-700 img {
+	max-width: 700px;
+	margin-bottom: 0px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.Inline-Figure-Borda-800 {
+	text-align: center;
+	max-width: 800px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-Borda-800 img {
+	max-width: 800px;
+	margin-bottom: 0px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.Inline-Figure-Borda-900 {
+	text-align: center;
+	width: 100%;
+	max-width: 900px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-Borda-900 img {
+	width: 100%;
+	max-width: 900px;
+	margin-bottom: 0px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.Inline-Figure-Borda-100 {
+	text-align: center;
+	max-width: 100px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-Borda-100 img {
+	max-width: 100px;
+	margin-bottom: 0px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.Inline-Figure-Borda-200 {
+	text-align: center;
+	max-width: 200px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-Borda-200 img {
+	max-width: 200px;
+	margin-bottom: 0px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.Inline-Figure-Borda-300 {
+	text-align: center;
+	max-width: 300px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-Borda-300 img {
+	max-width: 300px;
+	margin-bottom: 0px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.Inline-Figure-Borda-400 {
+	text-align: center;
+	max-width: 400px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-Borda-400 img {
+	max-width: 400px;
+	margin-bottom: 0px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.Inline-Figure-Borda-500 {
+	text-align: center;
+	max-width: 500px;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-Borda-500 img {
+	max-width: 500px;
+	margin-bottom: 0px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.Inline-Figure-700 {
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	max-width: 700px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-700 img {
+	width: 100%;
+	max-width: 700px;
+	margin-bottom: 0px;
+}
+
+.Inline-Figure-800 {
+	width: 100%;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	max-width: 800px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-800 img {
+	width: 100%;
+	max-width: 800px;
+	margin-bottom: 0px;
+}
+
+.Inline-Figure-900 {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	width: 100%;
+	max-width: 900px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-900 img {
+	width: 100%;
+	max-width: 900px;
+	margin-bottom: 0px;
+}
+
+.Inline-Figure-100 {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	max-width: 100px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-100 img {
+	max-width: 100px;
+	margin-bottom: 0px;
+}
+
+.Inline-Figure-200 {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	max-width: 200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-200 img {
+	max-width: 200px;
+	margin-bottom: 0px;
+}
+
+.Inline-Figure-300 {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	max-width: 300px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-300 img {
+	max-width: 300px;
+	margin-bottom: 0px;
+}
+
+.Inline-Figure-400 {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	max-width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-400 img {
+	max-width: 400px;
+	margin-bottom: 0px;
+}
+
+.Inline-Figure-500 {
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 0px;
+	max-width: 500px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.Inline-Figure-500 img {
+	max-width: 500px;
+	margin-bottom: 0px;
+}
+
+.center {
+	text-align: center !important;
+}
+
+.left {
+	text-align: left !important;
+}
+
+.right {
+	text-align: right !important;
+}
+
+.justify {
+	text-align: justify !important;
+}
+
+.margem-texto-livre {
+	margin-left: 37px !important;
+}
+
+.margem-extra {
+	margin-top: 10px !important;
+}
+
+/*Iniciais*/
+.logoIniciaisParagrafo {
+	line-height: 5;
+	text-align: center;
+}
+
+.logoIniciais {
+	max-width: 400px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+	margin-bottom: 0px;
+	display: block;
+}
+
+.logoFinais {
+	max-width: 405px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+	margin-bottom: 0px;
+	display: block;
+}
+
+._tituloIniciaisOrganizadoPela {
+	font-size: 18px !important;
+	font-weight: bold !important;
+	text-align: center !important;
+	font-family: "Roboto", sans-serif;
+	margin-bottom: 25px;
+	text-transform: uppercase;
+}
+
+.tituloIniciais,
+._tituloIniciaisExtenso {
+	font-size: 24px !important;
+	font-weight: bold !important;
+	text-align: center !important;
+	font-family: "Roboto", sans-serif;
+}
+
+.tituloIniciaisPromevet,
+._tituloIniciaisPromevetPA {
+	font-size: 40px !important;
+	font-weight: bold !important;
+	text-align: center !important;
+	font-family: "Roboto", sans-serif;
+	margin-top: -15px;
+}
+
+.tituloIniciaisSuper,
+._tituloIniciaisSuper {
+	font-size: 64px !important;
+	font-weight: bold !important;
+	text-align: center !important;
+	font-family: "Roboto", sans-serif;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+p._tituloIniciaisCiclo {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 50px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 11px;
+	text-align: center;
+}
+
+p._111-Corpo-sem-espacos-Center,
+p._113-Corpo-sem-espacos-Correcoes {
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: center;
+}
+
+p._tituloSociedade2 {
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 50px;
+	text-align: center;
+}
+
+p.TPS-On-the-fly__117-Corpo-Center,
+p._17-Corpo-Center {
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 11px;
+	text-align: center;
+}
+
+.borda {
+	border-color: #000000;
+	border-style: solid;
+	border-width: 1px;
+	padding: 20px;
+	margin-top: 50px;
+}
+
+.correcoes {
+	border-color: #000000;
+	border-style: solid none solid none;
+	border-width: 1px;
+	padding: 10px 0 10px 0;
+	margin-top: 50px;
+}
+
+.pageBreak {
+	border-color: #CCCCCC;
+	border-bottom-style: groove;
+	border-width: 0 0 2px 0;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	width: 100%;
+}
+
+#toc li {
+	font-family: "Roboto", sans-serif;
+	font-size: 1em;
+	font-weight: bold;
+	margin-bottom: 23px;
+	margin-right: 0px;
+	margin-top: 23px;
+	text-align: left;
+	text-decoration: underline;
+	display: block;
+}
+
+#toc li li {
+	font-family: "Roboto", sans-serif;
+	font-size: 1em;
+	margin-bottom: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: left;
+	text-decoration: underline;
+}
+
+#toc li a {
+	font-family: "Roboto", sans-serif;
+	font-size: 1em;
+	font-weight: bold;
+	margin-bottom: 23px;
+	margin-right: 0px;
+	margin-top: 23px;
+	text-align: left;
+	text-decoration: underline;
+}
+
+#toc li li a {
+	color: #000000;
+	font-family: "Roboto", sans-serif;
+	font-weight: normal;
+	font-size: 1em;
+	margin: 0 0 0 0;
+	text-align: left;
+	text-decoration: underline;
+}
+
+.Obj_saiba_mais {
+	margin-top: 20px;
+	margin-bottom: 10px;
+	border: 1px solid black;
+	padding: 10px;
+}
+
+.Non-Typefi-Table {
+	width: 100%;
+}
+
+table.Non-Typefi-Table tr {
+	vertical-align: top;
+}
+
+.Non-Typefi-Table,
+.Non-Typefi-Table tr,
+.Non-Typefi-Table tr td {
+	border: 1px solid black;
+}
+
+.Non-Typefi-Table tr td {
+	padding: 5px;
+}
+
+.forceTop {
+	vertical-align: top;
+}
+
+table.suplemento .none {
+	border: none;
+}
+
+table.Suplemento {
+	width: 100%;
+}
+
+table.Suplemento .None {
+	border: none;
+	padding: 10px;
+}
+
+table.Suplemento tr td {
+	padding: 10px;
+	background: #FFDDC6;
+}
+
+table.Suplemento thead {
+	border-style: none;
+}
+
+._14-Suplemento-Titulo {
+	font-family: "Roboto", sans-serif;
+	font-weight: bold;
+	text-align: center;
+	font-size: 1em;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+table.TituloSuplemento {
+	background-color: #FFFFFF;
+	width: 100%;
+	border: none;
+}
+
+table.TituloSuplemento td,
+tr {
+	border: none;
+	padding: 10px;
+}
+
+p._0-Titulo-Suplemento {
+	font-size: 1.833em;
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+p._0-Titulo-Suplemento1 {
+	font-size: 1.3em;
+	font-weight: bold;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.oculto {
+	display: none;
+}
+
+table.Suplemento thead p.mais {
+	max-width: 900px;
+	text-align: right;
+	margin-top: -29px;
+	margin-bottom: -50px;
+	right: 15px;
+	position: relative;
+}
+
+table.Suplemento thead p.mais::before {
+	content: " + ";
+}
+
+table.Suplemento thead.aberto p.mais {
+	max-width: 900px;
+	text-align: right;
+	margin-top: -31px;
+	margin-bottom: -50px;
+	right: 17px;
+	position: relative;
+}
+
+table.Suplemento thead.aberto p.mais::before {
+	content: " - ";
+}
+
+
+.esq {
+	margin-left: 0px;
+}
+
+.centro {
+	margin: 0 auto;
+	display: inline-block;
+}
+
+img.figmed {
+	width: 100%;
+	margin: 0 auto 0 auto;
+}
+
+img.sumario {
+	text-align: center;
+	width: 100%;
+	margin: 0 auto 3em auto;
+	max-width: 500px;
+}
+
+.ec {
+	margin: 2em 0 2em 0;
+}
+
+.lcase {
+	text-transform: lowercase;
+}
+
+div.Figura {
+	text-align: center;
+	display: block;
+	margin-top: 2em;
+	margin-bottom: 2em;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100%;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 3;
+	padding-top: 100px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px 20px 30% 20px;
+	border: 1px solid #888;
+	width: 80%;
+}
+
+.close {
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: red;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+#myBtn {
+	position: fixed;
+	font-size: 0.6em;
+	font-weight: bold;
+	width: 80px;
+	height: 50px;
+	bottom: 10px;
+	right: 10px;
+	border-style: none;
+	color: #FFF;
+	border-radius: 30px;
+	text-align: center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+/**/
+/**/
+/**/
+/* Desta linha para baixo a versão para telas pequenas*/
+/**/
+/**/
+/**/
+
+@media screen and (max-width: 400px) {
+
+	h1._0-Titulo-Artigo {
+		font-size: 1.3em;
+	}
+
+	p._c-Atividade-Enunciado,
+	p._b1-Atividade-alternativa-I,
+	p._b-Atividade-alternativa,
+	p._b4-Atividade-alternativa---FalsoVerdadeiro,
+	p._c1-Atividade-texto-livre,
+	p._3-Importante,
+	p._2-Definicao,
+	p._e-Quadro-destaque,
+	p._1-Lembrar,
+	p._4-Alerta {
+		text-align: left;
+	}
+
+	p._01-Titulo---Autores {
+		font-size: 0.7em;
+		margin-bottom: 3px;
+		margin-left: 10%;
+
+	}
+
+	.CelulaPreta {
+		width: 10%;
+	}
+
+	.CelularCorProgramaEstreita {
+		width: 5px;
+	}
+
+	.questaoErrada,
+	.questaoCorreta,
+	.questaoConfira,
+	table.Correlacao,
+	p._ficha,
+	p._ficha2,
+	p._ficha2Right {
+		margin-left: 0;
+	}
+
+	p.Atividades {
+		font-size: 0.9em;
+		padding: 17px;
+	}
+
+	p._c-Atividade-Enunciado {
+		margin-left: 25px;
+		text-indent: -20px;
+	}
+
+	p._b-Atividade-alternativa {
+		text-indent: -20px;
+		margin-left: 25px;
+	}
+
+	p._r-Atividade-Resposta {
+		margin-left: 25px;
+		text-indent: -20px;
+	}
+
+	p._b1-Atividade-alternativa-I {
+		margin-left: 25px;
+		text-indent: -20px;
+	}
+
+	p._b4-Atividade-alternativa---FalsoVerdadeiro {
+		margin-left: 25px;
+		text-indent: -20px;
+	}
+
+	p._b5-Atividade-alternativa---Correlacao {
+		margin-left: 0px;
+	}
+
+	table.Correlacao {
+		margin-left: 20px;
+		font-size: 80%;
+	}
+
+	p._b5-Atividade-alternativa---Correlacao {
+		margin-left: 10px;
+	}
+
+	._tituloIniciaisOrganizadoPela {
+		font-size: 14px !important;
+		margin-bottom: 25px;
+	}
+
+	.tituloIniciais,
+	._tituloIniciaisExtenso {
+		font-size: 14px !important;
+	}
+
+	.tituloIniciaisSuper,
+	._tituloIniciaisSuper {
+		font-size: 30px !important;
+		font-weight: 900 !important;
+	}
+
+	ul.objetivos {
+		border-left-style: none;
+		margin-left: 0px;
+	}
+
+	p._tituloIniciaisCiclo {
+		margin-top: 61px;
+	}
+
+	.internal-use_TOC1 {
+		font-size: .8em;
+		margin-left: 10%;
+		margin-top: 20px;
+	}
+
+	p._1-Corpo-autores {
+		margin-left: 10%;
+	}
+
+	img {
+		width: 100%;
+	}
+
+	.InlineGrande img {
+		text-align: center !important;
+		width: 900px !important;
+		position: relative;
+		background-color: #fff;
+		padding: 10px;
+		border: 4px solid #000 !important;
+		z-index: 6 !important;
+		vertical-align: text-top;
+		margin-bottom: -7px !important;
+		cursor: pointer;
+	}
+
+	.InlineGrande {
+		width: 900px !important;
+		position: relative;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		text-align: center !important;
+		z-index: 5 !important;
+		white-space: nowrap;
+	}
+
+	div.diretoria {
+		border-left-style: none;
+		padding: 0 0 0 0px;
+		width: auto;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	p.Organizador {
+		font-weight: bold;
+		margin-right: auto;
+		margin-left: auto;
+		text-align: left;
+		width: auto;
+	}
+}

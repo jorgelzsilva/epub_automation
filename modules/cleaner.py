@@ -1,6 +1,7 @@
 import os
 import re
 import logging
+from bs4 import BeautifulSoup
 from config import Config
 
 def invert_attributes(html_content):
@@ -41,6 +42,33 @@ def clean_h1_in_lists(content, pattern_info):
         logging.warning(f"Error applying H1 list cleaning: {e}")
         return content
 
+def move_headers_out_of_lists(soup):
+    """
+    Finds header tags (h1-h6) nested inside <li> tags and moves them 
+    outside the parent list (ul/ol).
+    """
+    modified = False
+    # Find all h1, h2, h3, h4, h5, h6 tags
+    headers = soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+    
+    for h in headers:
+        # Check if the header is inside an li
+        li_parent = h.find_parent('li')
+        if li_parent:
+            # Found a nested header. We need to move it out of the list.
+            # Usually it's at the end of the li, but let's be safe.
+            
+            # Find the root list container (ul or ol)
+            list_container = li_parent.find_parent(['ul', 'ol'])
+            if list_container:
+                # Move the header after the list container
+                h_extract = h.extract()
+                list_container.insert_after(h_extract)
+                modified = True
+                logging.info(f"Moved header '{h_extract.get_text()[:20]}...' out of list.")
+                
+    return modified
+
 def run(content_dir):
     logging.info(f"Cleaning files in {content_dir}...")
     
@@ -69,6 +97,11 @@ def run(content_dir):
                 # Pattern: <div>\s*<div class="Basic-Text-Frame"></div>\s*</div>
                 content = re.sub(r'<div>\s*<div class="Basic-Text-Frame"></div>\s*</div>', '', content)
                 
+                # 5. Fix Nested Headers using BeautifulSoup
+                soup = BeautifulSoup(content, 'html.parser')
+                if move_headers_out_of_lists(soup):
+                    content = str(soup)
+
                 if content != original_content:
                     with open(file_path, 'w', encoding='utf-8') as f:
                         f.write(content)

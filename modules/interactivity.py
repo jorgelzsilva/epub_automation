@@ -2,11 +2,11 @@ import os
 import re
 import logging
 import unicodedata
+import shutil
 from bs4 import BeautifulSoup
 from config import Config
 
 JS_BLOCK = """
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js' type='text/javascript'></script>
 <script type='text/javascript'>
  //<![CDATA[
  function showMe(par1, par2, par3, par4) {
@@ -101,9 +101,85 @@ def find_tags_with_class(soup, class_name):
                 tags.append(tag)
     return tags
 
-def run(content_dir):
+def inject_jquery_asset(content_dir):
+    js_dir = os.path.join(content_dir, "js")
+    if not os.path.exists(js_dir):
+        os.makedirs(js_dir)
+    
+    # Source asset path (assuming assets folder in project root)
+    # This module is in modules/, so root is ../
+    project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    src_jquery = os.path.join(project_root, "assets", "jquery.min.js")
+    
+    dst_jquery = os.path.join(js_dir, "jquery.min.js")
+    
+    if os.path.exists(src_jquery):
+        shutil.copy(src_jquery, dst_jquery)
+        logging.info(f"Copied jquery.min.js to {dst_jquery}")
+    else:
+        logging.warning(f"jquery.min.js not found at {src_jquery}. Creating empty placeholder to avoid crash, but functionality will fail.")
+        # Create dummy file if missing to prevent file-not-found later? 
+        # Better to error out or user needs to fix.
+        with open(dst_jquery, 'w') as f:
+            f.write("// jQuery placeholder")
+
+def update_opf_manifest(opf_path, modified_files):
+    logging.info(f"Updating OPF manifest at {opf_path}")
+    if not os.path.exists(opf_path):
+        logging.error("OPF path invalid.")
+        return
+
+    with open(opf_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    # Try parsing as xml, fallback to html.parser
+    try:
+        soup = BeautifulSoup(content, 'xml')
+    except:
+        soup = BeautifulSoup(content, 'html.parser')
+
+    manifest = soup.find('manifest')
+    if not manifest:
+        logging.error("Manifest not found in OPF.")
+        return
+
+    # 1. Add jQuery item if missing
+    # Assuming relative path from OPF dir to js/jquery.min.js is js/jquery.min.js
+    # (Since structure usually is OEBPS/content.opf and OEBPS/js/...)
+    jquery_href = "js/jquery.min.js"
+    if not manifest.find('item', href=jquery_href):
+        item = soup.new_tag('item', id="jquery-js", href=jquery_href)
+        item['media-type'] = "application/javascript" # EPub standard might prefer text/javascript or application/javascript. 
+        # application/javascript is cleaner.
+        manifest.append(item)
+        logging.info("Added jquery item to manifest.")
+
+    # 2. Add scripted property to modified files
+    opf_dir = os.path.dirname(opf_path)
+    for file_path in modified_files:
+        # Calculate relative path from OPF to the file
+        rel_path = os.path.relpath(file_path, opf_dir).replace(os.sep, '/')
+        
+        item = manifest.find('item', href=rel_path)
+        if item:
+            props = item.get('properties', '')
+            if 'scripted' not in props:
+                new_props = (props + " scripted").strip()
+                item['properties'] = new_props
+                # logging.info(f"Added scripted property to {rel_path}")
+
+    with open(opf_path, 'w', encoding='utf-8') as f:
+        f.write(str(soup))
+
+
+def run(content_dir, opf_path):
     logging.info(f"Injecting interactivity in {content_dir}...")
     
+    # Ensure jQuery is physically present
+    inject_jquery_asset(content_dir)
+
+    modified_files = []
+
     for root, _, files in os.walk(content_dir):
         for file in files:
             if not (file.endswith('.xhtml') or file.endswith('.html')):
@@ -321,7 +397,28 @@ def run(content_dir):
             # Inject Script in Head
             if soup.head:
                 if not soup.head.find(string=re.compile("showMe")):
+                    # Calculate relative path to jquery
+                    # content_dir/js/jquery.min.js
+                    # file_path is the current file
+                    
+                    # Target: content_dir/js/jquery.min.js
+                    # We need path from file_dir to target
+                    
+                    # Assume jquery is always in content_dir/js
+                    target_js = os.path.join(content_dir, "js", "jquery.min.js")
+                    rel_js_path = os.path.relpath(target_js, os.path.dirname(file_path)).replace(os.sep, '/')
+                    
+                    # 1. Inject jQuery script tag
+                    script_tag = soup.new_tag('script', src=rel_js_path, type="text/javascript")
+                    soup.head.append(script_tag)
+                    
+                    # 2. Inject the code block
                     soup.head.append(BeautifulSoup(JS_BLOCK, 'html.parser'))
+                    
+                    modified_files.append(file_path)
             
             with open(file_path, 'w', encoding='utf-8') as f:
                 f.write(str(soup))
+
+    # Update OPF with new requirements
+    update_opf_manifest(opf_path, modified_files)

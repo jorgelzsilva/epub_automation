@@ -5,7 +5,7 @@ import shutil
 import logging
 from config import Config
 from utils.epub_wrapper import extract_epub, package_epub
-from modules import renamer, cleaner, structure, interactivity, topic_identifier, ncx_generator, auditor, url_linker, qr_scanner
+from modules import renamer, cleaner, structure, interactivity, topic_identifier, ncx_generator, auditor, url_linker, qr_scanner, font_injector
 
 def setup_logging():
     logging.basicConfig(
@@ -70,8 +70,12 @@ def main():
         structure.run(content_dir)
         logging.info("Structure updates completed.")
 
+        # 3.5. Inject Fonts
+        font_injector.run(content_dir, opf_path)
+        logging.info("Fonts injected.")
+
         # 4. Interactivity (Plugin Logic)
-        interactivity.run(content_dir)
+        interactivity.run(content_dir, opf_path)
         logging.info("Interactivity injected.")
 
         # 4.5. URL Linker (Optional)
