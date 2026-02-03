@@ -3,3 +3,4 @@ requests
 lxml
 pillow
 pyzbar
+python-dotenv

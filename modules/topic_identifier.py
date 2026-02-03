@@ -5,9 +5,11 @@ import json
 from bs4 import BeautifulSoup
 from config import Config
 
+import re
+
 def analyze_table_with_ai(rows_text):
     """
-    Sends the entire table content to LM Studio to identify topic rows.
+    Sends the entire table content to the configured AI provider to identify topic rows.
     Returns a list of integer indices for rows that are topics.
     """
     if not rows_text:
@@ -22,45 +24,57 @@ def analyze_table_with_ai(rows_text):
         "These are distinct from regular data rows.\n\n"
         "Input Table:\n"
         f"{table_str}\n\n"
-        "Return ONLY a JSON array of integers containing the row numbers (indices) of the topic headers.\n"
-        "Example: [0, 5]\n"
+        "CRITICAL: Return ONLY a JSON array of integers containing the row numbers (indices) of the topic headers.\n"
+        "Example output: [0, 5]\n"
         "If no topics are found, return: []\n"
-        "Do not write explanations."
+        "Do not write explanations, introductions, or any other text. Only the JSON array."
     )
     
     payload = {
+        "model": Config.AI_MODEL,
         "messages": [
-            {"role": "system", "content": "Return only a JSON array."},
+            {"role": "system", "content": "You are a specialized document analyzer that ONLY outputs JSON arrays. Do not reason aloud. Do not explain. Just output the array."},
             {"role": "user", "content": prompt}
         ],
-        "temperature": 0.1,
-        "max_tokens": 100
+        "temperature": 0,
+        "max_tokens": 1000  # Increased for models that reason extensively
     }
     
-    print(f"  [AI] Analyzing Table ({len(rows_text)} rows)... ", end="", flush=True)
+    headers = {
+        "Content-Type": "application/json"
+    }
+    
+    if Config.AI_API_KEY:
+        headers["Authorization"] = f"Bearer {Config.AI_API_KEY}"
+        
+    if Config.AI_PROVIDER == "openrouter":
+        headers["HTTP-Referer"] = "https://github.com/jorgelzsilva/epub_automation"
+        headers["X-Title"] = "EPUB Automation"
+
+    print(f"  [AI] Analyzing Table ({len(rows_text)} rows) using {Config.AI_PROVIDER}... ", end="", flush=True)
     
     try:
-        response = requests.post(Config.LM_STUDIO_URL, json=payload, timeout=20)
+        response = requests.post(Config.AI_API_URL, json=payload, headers=headers, timeout=30)
         if response.status_code == 200:
-            content = response.json()['choices'][0]['message']['content'].strip()
+            data = response.json()
+            content = data['choices'][0]['message'].get('content', '').strip()
+            # Fallback for models that might put the answer in 'reasoning'
+            reasoning = data['choices'][0]['message'].get('reasoning', '')
+            full_text = content + "\n" + reasoning
             
-            # Cleaning up common LLM artifacts
-            content = content.replace("```json", "").replace("```", "").strip()
+            # Use regex to find the first bracketed list in the response
+            match = re.search(r'\[\s*\d*(?:\s*,\s*\d+)*\s*\]', full_text)
             
-            # Try to find list brackets
-            start = content.find('[')
-            end = content.rfind(']') + 1
-            
-            if start != -1 and end != -1:
-                json_str = content[start:end]
+            if match:
+                json_str = match.group(0)
                 try:
                     indices = json.loads(json_str)
-                    print(f"-> Detected Topics at indices: {indices}")
+                    print(f"-> Detected Topics: {indices}")
                     return indices
                 except json.JSONDecodeError:
-                    print(f"-> JSON Error: {content}")
+                    print(f"-> JSON Error in extracted string: {json_str}")
             else:
-                 print(f"-> Invalid Format: {content[:50]}...")
+                 print(f"-> Parsing Error. Raw Response: '{content[:100]}...' [Reasoning len: {len(reasoning)}]")
                  return []
                  
     except Exception as e:
