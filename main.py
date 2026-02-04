@@ -7,6 +7,8 @@ from config import Config
 from utils.epub_wrapper import extract_epub, package_epub
 from modules import renamer, cleaner, structure, interactivity, topic_identifier, ncx_generator, auditor, url_linker, qr_scanner, font_injector
 
+import time
+
 def setup_logging():
     logging.basicConfig(
         level=logging.INFO,
@@ -18,6 +20,7 @@ def setup_logging():
     )
 
 def main():
+    start_overall = time.time()
     parser = argparse.ArgumentParser(description="Automate ePub processing for InteratividadePRO")
     parser.add_argument("input_epub", help="Path to the input ePub file")
     parser.add_argument("output_epub", help="Path to the output ePub file")
@@ -39,6 +42,8 @@ def main():
     if os.path.exists(work_dir):
         shutil.rmtree(work_dir)
     os.makedirs(work_dir)
+
+    ai_metrics = {"total_ai_time": 0, "total_tokens": 0, "ai_calls": 0}
 
     try:
         # 0. Extract
@@ -85,7 +90,7 @@ def main():
 
         # 5. Topic Identifier (AI)
         # This modifies the files in place
-        topic_identifier.run(content_dir)
+        ai_metrics = topic_identifier.run(content_dir)
         logging.info("Topic identification completed.")
 
         # 6. NCX Generator
@@ -99,6 +104,20 @@ def main():
         # 7. Package
         package_epub(work_dir, output_path)
         logging.info(f"Successfully created: {output_path}")
+
+        # Performance Summary
+        end_overall = time.time()
+        total_process_time = end_overall - start_overall
+        avg_ai_time = ai_metrics["total_ai_time"] / ai_metrics["ai_calls"] if ai_metrics["ai_calls"] > 0 else 0
+        
+        print("\n" + "="*40)
+        print("PERFORMANCE METRICS")
+        print("="*40)
+        print(f"Total Process Time: {total_process_time:.2f}s")
+        print(f"Total AI Stage Time: {ai_metrics['total_ai_time']:.2f}s")
+        print(f"Average AI Response: {avg_ai_time:.2f}s")
+        print(f"Total Tokens Spent: {ai_metrics['total_tokens']}")
+        print("="*40 + "\n")
 
     except Exception as e:
         logging.error(f"An error occurred: {e}", exc_info=True)

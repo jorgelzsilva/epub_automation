@@ -6,14 +6,15 @@ from bs4 import BeautifulSoup
 from config import Config
 
 import re
+import time
 
 def analyze_table_with_ai(rows_text):
     """
     Sends the entire table content to the configured AI provider to identify topic rows.
-    Returns a list of integer indices for rows that are topics.
+    Returns a dictionary with indices, time taken, and tokens used.
     """
     if not rows_text:
-        return []
+        return {"indices": [], "time": 0, "tokens": 0}
 
     # Build a numbered list string for the prompt
     table_str = "\n".join([f"Row {i}: {text[:100]}" for i, text in enumerate(rows_text)])
@@ -28,6 +29,12 @@ def analyze_table_with_ai(rows_text):
         "Example output: [0, 5]\n"
         "If no topics are found, return: []\n"
         "Do not write explanations, introductions, or any other text. Only the JSON array."
+        "If the row are mostly uppercase mark it as a topic header"
+        "If the row are mostly lowercase DON'T mark it!"
+        "The last row in a table is never a topic header"
+        "If there is bullet in the row it isn't a topic header"
+        "If it is an extensive paragraph in the row it isn't a topic header"
+        "Never all of the rows are simoultaneously topic headers!"
     )
     
     payload = {
@@ -53,10 +60,17 @@ def analyze_table_with_ai(rows_text):
 
     print(f"  [AI] Analyzing Table ({len(rows_text)} rows) using {Config.AI_PROVIDER}... ", end="", flush=True)
     
+    start_time = time.time()
+    result = {"indices": [], "time": 0, "tokens": 0}
+    
     try:
         response = requests.post(Config.AI_API_URL, json=payload, headers=headers, timeout=30)
+        result["time"] = time.time() - start_time
+        
         if response.status_code == 200:
             data = response.json()
+            result["tokens"] = data.get("usage", {}).get("total_tokens", 0)
+            
             content = data['choices'][0]['message'].get('content', '').strip()
             # Fallback for models that might put the answer in 'reasoning'
             reasoning = data['choices'][0]['message'].get('reasoning', '')
@@ -68,24 +82,26 @@ def analyze_table_with_ai(rows_text):
             if match:
                 json_str = match.group(0)
                 try:
-                    indices = json.loads(json_str)
-                    print(f"-> Detected Topics: {indices}")
-                    return indices
+                    result["indices"] = json.loads(json_str)
+                    print(f"-> Detected Topics: {result['indices']}")
                 except json.JSONDecodeError:
                     print(f"-> JSON Error in extracted string: {json_str}")
             else:
                  print(f"-> Parsing Error. Raw Response: '{content[:100]}...' [Reasoning len: {len(reasoning)}]")
-                 return []
                  
     except Exception as e:
         print(f"-> ERROR ({e})")
         logging.warning(f"AI table check failed: {e}")
-        return []
         
-    return []
+    return result
 
 def run(content_dir):
     logging.info(f"Identifying table topics in {content_dir}...")
+    metrics = {
+        "total_ai_time": 0,
+        "total_tokens": 0,
+        "ai_calls": 0
+    }
     
     for root, _, files in os.walk(content_dir):
         for file in files:
@@ -139,7 +155,11 @@ def run(content_dir):
                 if not target_rows:
                     continue
 
-                topic_indices = analyze_table_with_ai(target_rows)
+                ai_result = analyze_table_with_ai(target_rows)
+                topic_indices = ai_result["indices"]
+                metrics["total_ai_time"] += ai_result["time"]
+                metrics["total_tokens"] += ai_result["tokens"]
+                metrics["ai_calls"] += 1
                 
                 for idx in topic_indices:
                     if isinstance(idx, int) and 0 <= idx < len(target_rows):
@@ -156,3 +176,5 @@ def run(content_dir):
             if modified:
                 with open(file_path, 'w', encoding='utf-8') as f:
                     f.write(str(soup))
+    
+    return metrics
