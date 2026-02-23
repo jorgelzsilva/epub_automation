@@ -41,3 +41,8 @@ htmlcov/
 
 # Logs
 *.log
+
+# Processing folders
+input/
+output/
+temp_epub_*/
