@@ -34,7 +34,7 @@ Esta aplicação automatiza o processamento e aprimoramento de arquivos EPUB par
 
 1. **Clonar o repositório**:
    ```bash
-   git clone <url-do-repositorio>
+   git clone [<url-do-repositorio>](https://github.com/jorgelzsilva/epub_automation)
    cd epub_automation
    ```
 
