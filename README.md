@@ -1,6 +1,6 @@
-# EPUB Automation - InteratividadePRO
+# EPUB Automation
 
-Esta aplicação automatiza o processamento e aprimoramento de arquivos EPUB para o ecossistema InteratividadePRO. Ela realiza limpezas estruturais, injeção de fontes, adição de interatividade em atividades e identificação automática de tópicos via IA.
+Esta aplicação automatiza o processamento e aprimoramento de arquivos EPUB. Ela realiza limpezas estruturais, injeção de fontes, adição de interatividade em atividades e identificação automática de tópicos via IA.
 
 ## Funcionalidades Principais
 
@@ -34,7 +34,7 @@ Esta aplicação automatiza o processamento e aprimoramento de arquivos EPUB par
 
 1. **Clonar o repositório**:
    ```bash
-   git clone <url-do-repositorio>
+   git clone https://github.com/jorgelzsilva/epub_automation
    cd epub_automation
    ```
 
